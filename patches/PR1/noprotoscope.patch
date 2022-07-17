@@ -1,0 +1,16 @@
+diff --git a/support/getopt.c b/support/getopt.c
+index eeb71ba..b3a03ca 100644
+--- a/support/getopt.c
++++ b/support/getopt.c
+@@ -21,9 +21,11 @@
+ 
+ /* This tells Alpha OSF/1 not to define a getopt prototype in <stdio.h>.
+    Ditto for AIX 3.2 and <stdlib.h>.  */
++#ifndef __MVS__
+ #ifndef _NO_PROTO
+ # define _NO_PROTO
+ #endif
++#endif
+ 
+ #ifdef HAVE_CONFIG_H
+ # include <config.h>

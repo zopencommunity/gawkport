@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Set up environment variables for general build tool to operate
+#
+if ! [ -f ./buildenv ]; then
+	echo "Need to source from the buildenv directory" >&2
+	return 0
+fi
+
+export ZOPEN_ROOT="${PWD}"
+export ZOPEN_TYPE="TARBALL"
+
+ZOPEN_TARBALL_DIR=gawk-5.1.1
+export ZOPEN_TARBALL_URL="https://git.savannah.gnu.org/cgit/gawk.git/snapshot/${ZOPEN_TARBALL_DIR}.tar.gz"
+export ZOPEN_TARBALL_DEPS="curl gzip make"
