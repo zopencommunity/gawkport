@@ -1,0 +1,13 @@
+diff --git a/configure b/configure
+index fcef4bd..c9dbfe7 100755
+--- a/configure
++++ b/configure
+@@ -7459,7 +7459,7 @@ fi
+ printf %s "checking if we are using EBCDIC... " >&6; }
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+-#if 'a' == 0x81
++#if 0 
+ gnu_gawk_in_ebcdic
+ #endif
+ _ACEOF
