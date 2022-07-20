@@ -1,0 +1,39 @@
+diff --git a/io.c b/io.c
+index 91c94d9..3ac4b0d 100644
+--- a/io.c
++++ b/io.c
+@@ -788,6 +788,22 @@ check_duplicated_redirections(const char *name, size_t len,
+ 	}
+ }
+ 
++#ifdef __MVS__
++  #if (__CHARSET_LIB == 1)
++  static int chgfdccsid(int fd, unsigned short ccsid) 
++  {
++    attrib_t attr;
++    memset(&attr, 0, sizeof(attr));
++    attr.att_filetagchg = 1;
++    attr.att_filetag.ft_ccsid = ccsid;
++    if (ccsid != FT_BINARY) {
++      attr.att_filetag.ft_txtflag = 1;
++    }
++    return __fchattr(fd, &attr, sizeof(attr));
++  }
++  #endif
++#endif
++
+ /* redirect_string --- Redirection for printf and print commands, use string info */
+ 
+ struct redirect *
+@@ -1043,6 +1059,11 @@ redirect_string(const char *str, size_t explen, bool not_string,
+ 					fd_flags = fcntl(fd, F_GETFL);
+ 					if (fd_flags != -1 && (fd_flags & O_APPEND) == O_APPEND)
+ 						omode = binmode("a");
++#endif
++#ifdef __MVS__
++  #if (__CHARSET_LIB == 1)
++        chgfdccsid(fd, 819);
++  #endif
+ #endif
+ 					os_close_on_exec(fd, str, "file", "");
+ 					rp->output.fp = fdopen(fd, (const char *) omode);
