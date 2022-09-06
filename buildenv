@@ -10,3 +10,9 @@ export ZOPEN_TARBALL_DEPS="curl gzip make"
 export ZOPEN_EXTRA_CPPFLAGS="-DATTRIBUTE_NORETURN=_Noreturn"
 
 export ZOPEN_BOOTSTRAP=skip
+
+zopen_check_results()
+{
+  return 3 # non-functional
+}
+
