@@ -1,0 +1,13 @@
+diff --git a/build-aux/install-sh b/build-aux/install-sh
+index ec298b5..8357c99 100755
+--- a/build-aux/install-sh
++++ b/build-aux/install-sh
+@@ -236,7 +236,7 @@ if test -z "$dir_arg"; then
+   do_exit='(exit $ret); exit $ret'
+   trap "ret=129; $do_exit" 1
+   trap "ret=130; $do_exit" 2
+-  trap "ret=141; $do_exit" 13
++  trap "ret=141; $do_exit" SIGPIPE 
+   trap "ret=143; $do_exit" 15
+ 
+   # Set umask so as not to create temps with too-generous modes.
