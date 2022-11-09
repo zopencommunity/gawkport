@@ -14,7 +14,7 @@ zopen_check_results()
 {
   chk="$1/$2_check.log"
 
-  totalTests=$(ls $1/test/*.ok | wc -l)
+  totalTests=$(ls test/*.ok | wc -l)
   failures=$(cat "${chk}" | grep " TESTS FAILED" | cut -f1 -d' ')
 cat <<ZZ
 actualFailures:$failures
