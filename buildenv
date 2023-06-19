@@ -23,3 +23,7 @@ expectedFailures:43
 ZZ
 }
 
+zopen_get_version()
+{
+    ./gawk -V | head -1 | awk '{print $3}'  
+}
