@@ -1,11 +1,9 @@
-#
-# Set up environment variables for general build tool to operate
-#
-export ZOPEN_TYPE="TARBALL"
+# bump: gawk-version /GAWK_VERSION="(.*)"/ https://git.savannah.gnu.org/git/gawk.git|semver:*
+GAWK_VERSION="5.1.1"
 
-ZOPEN_TARBALL_DIR=gawk-5.1.1
-export ZOPEN_TARBALL_URL="https://git.savannah.gnu.org/cgit/gawk.git/snapshot/${ZOPEN_TARBALL_DIR}.tar.gz"
-export ZOPEN_TARBALL_DEPS="curl gzip make diffutils zoslib"
+export ZOPEN_BUILD_LINE="STABLE"
+export ZOPEN_STABLE_URL="https://git.savannah.gnu.org/cgit/gawk.git/snapshot/gawk-${GAWK_VERSION}.tar.gz"
+export ZOPEN_STABLE_DEPS="curl gzip make diffutils zoslib"
 export ZOPEN_EXTRA_CPPFLAGS="-DATTRIBUTE_NORETURN=_Noreturn"
 
 export ZOPEN_BOOTSTRAP=skip
