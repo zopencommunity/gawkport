@@ -25,3 +25,9 @@ zopen_get_version()
 {
     ./gawk -V | head -1 | awk '{print $3}'  
 }
+
+zopen_post_install()
+{
+  mkdir -p "$1/altbin"
+  ln -s "../bin/gawk" "$1/altbin/awk"
+}
