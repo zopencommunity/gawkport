@@ -1,5 +1,5 @@
 # bump: gawk-version /GAWK_VERSION="(.*)"/ https://git.savannah.gnu.org/git/gawk.git|semver:*
-GAWK_VERSION="5.2.2"
+GAWK_VERSION="5.3.0"
 
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_STABLE_URL="https://git.savannah.gnu.org/cgit/gawk.git/snapshot/gawk-${GAWK_VERSION}.tar.gz"
@@ -17,11 +17,17 @@ zopen_check_results()
 cat <<ZZ
 actualFailures:$failures
 totalTests:$totalTests
-expectedFailures:43
+expectedFailures:46
 ZZ
 }
 
 zopen_get_version()
 {
     ./gawk -V | head -1 | awk '{print $3}'  
+}
+
+zopen_post_install()
+{
+  mkdir -p "$1/altbin"
+  ln -s "../bin/gawk" "$1/altbin/awk"
 }
