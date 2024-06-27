@@ -26,8 +26,18 @@ zopen_get_version()
     ./gawk -V | head -1 | awk '{print $3}'  
 }
 
+zopen_install_caveats()
+{
+cat <<ZZ
+GNU awk has been installed with the prefix "g" under bin/gawk to avoid collision with z/OS /bin/awk.
+If you prefer to use GNU awk as awk, source zopen-config with the option --override-zos-tools.
+Or add \$ZOPEN_ROOTFS/usr/local/altbin to your \$PATH.
+ZZ
+}
+
 zopen_post_install()
 {
   mkdir -p "$1/altbin"
+  rm $1/bin/awk
   ln -s "../bin/gawk" "$1/altbin/awk"
 }
