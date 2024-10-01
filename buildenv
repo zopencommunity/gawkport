@@ -29,9 +29,10 @@ zopen_get_version()
 zopen_install_caveats()
 {
 cat <<ZZ
-GNU awk has been installed with the prefix "g" under bin/gawk to avoid collision with z/OS /bin/awk.
-If you prefer to use GNU awk as awk, source zopen-config with the option --override-zos-tools.
-Or add \$ZOPEN_ROOTFS/usr/local/altbin to your \$PATH.
+GNU awk has been installed as gawk under the bin/ dir to avoid collision with z/OS /bin/awk.
+The conflicting manpages have been installed under the share/altman dir. You can use zotman to view
+the manpages as such: zotman gawk
+If you prefer to use the GNU awk as awk, source zopen-config with the option --override-zos-tools.
 ZZ
 }
 
@@ -40,4 +41,8 @@ zopen_post_install()
   mkdir -p "$1/altbin"
   rm $1/bin/awk
   ln -s "../bin/gawk" "$1/altbin/awk"
+
+  mkdir -p $ZOPEN_INSTALL_DIR/share/altman/man1
+  mv $ZOPEN_INSTALL_DIR/share/man/man1/awk.1 $ZOPEN_INSTALL_DIR/share/man/man1/gawk.1
+  ln -s ../../man/man1/gawk.1 $ZOPEN_INSTALL_DIR/share/altman/man1/awk.1
 }
