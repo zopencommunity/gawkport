@@ -1,5 +1,5 @@
 # bump: gawk-version /GAWK_VERSION="(.*)"/ https://git.savannah.gnu.org/git/gawk.git|semver:*
-GAWK_VERSION="5.3.1"
+GAWK_VERSION="5.3.2"
 
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_CATEGORIES="utilities"
