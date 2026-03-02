@@ -1,11 +1,11 @@
 # bump: gawk-version /GAWK_VERSION="(.*)"/ https://git.savannah.gnu.org/git/gawk.git|semver:*
-GAWK_VERSION="5.3.1"
+GAWK_VERSION="5.4.0"
 
 export ZOPEN_BUILD_LINE="STABLE"
 export ZOPEN_CATEGORIES="utilities"
 export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/gawk/gawk-${GAWK_VERSION}.tar.gz"
 export ZOPEN_STABLE_DEPS="curl gzip make diffutils zoslib tar"
-export ZOPEN_EXTRA_CPPFLAGS="-DATTRIBUTE_NORETURN=_Noreturn"
+export ZOPEN_EXTRA_CPPFLAGS="-DATTRIBUTE_NORETURN=_Noreturn -D_OPEN_SYS_UNLOCKED_EXT"
 
 export ZOPEN_BOOTSTRAP=skip
 
