@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/zopencommunity/gawkport/actions/workflows/codeql.yml/badge.svg)](https://github.com/zopencommunity/gawkport/actions/workflows/codeql.yml)
+
 [![Automatic version updates](https://github.com/ZOSOpenTools/gawkport/actions/workflows/bump.yml/badge.svg)](https://github.com/ZOSOpenTools/gawkport/actions/workflows/bump.yml)
 
 # Gawk
